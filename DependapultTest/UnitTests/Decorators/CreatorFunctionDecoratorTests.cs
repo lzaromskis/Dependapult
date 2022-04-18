@@ -6,7 +6,6 @@ using Dependapult;
 using Dependapult.Decorators;
 using Dependapult.Exceptions;
 using DependapultTest.UnitTests.TestUtil;
-using Moq;
 using Shouldly;
 using Xunit;
 
