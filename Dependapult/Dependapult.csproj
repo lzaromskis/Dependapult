@@ -14,7 +14,7 @@
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <DocumentationFile>obj\Dependapult.xml</DocumentationFile>
-    <AssemblyOriginatorKeyFile>C:\Users\Lukas\Documents\2 sem\Komponentai\Dependapult\sgKey.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\sgKey.snk</AssemblyOriginatorKeyFile>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Copyright>Copyright (c) Lukas Žaromskis 2022.</Copyright>
     <PackageProjectUrl>https://github.com/lzaromskis/Dependapult</PackageProjectUrl>
