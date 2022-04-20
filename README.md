@@ -1,8 +1,6 @@
 # Dependapult
 Simple dependency injection library for .NET 6
 
-[[TOC]]
-
 ## What is it?
 
 It is a minimal dependency injection library to register all of your dependencies.
