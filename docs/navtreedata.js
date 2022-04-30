@@ -25,6 +25,17 @@
 var NAVTREE =
 [
   [ "Dependapult", "index.html", [
+    [ "What is it?", "index.html#autotoc_md3", null ],
+    [ "Features", "index.html#autotoc_md4", null ],
+    [ "Usage", "index.html#autotoc_md5", [
+      [ "Getting Dependapult service object", "index.html#autotoc_md6", null ],
+      [ "Registering a dependency without providing arguments", "index.html#autotoc_md7", null ],
+      [ "Registering a dependency and providing arguments", "index.html#autotoc_md8", null ],
+      [ "Registering a dependency and providing a creator function", "index.html#autotoc_md9", null ],
+      [ "Replacing a dependency", "index.html#autotoc_md10", null ],
+      [ "Getting a dependency", "index.html#autotoc_md11", null ],
+      [ "Tagging a constructor", "index.html#autotoc_md12", null ]
+    ] ],
     [ "Changelog", "md__dependapult__changelog.html", [
       [ "1.0.0", "md__dependapult__changelog.html#autotoc_md1", null ]
     ] ],
