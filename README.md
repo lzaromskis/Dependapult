@@ -14,6 +14,8 @@ It is a minimal dependency injection library to register all of your dependencie
 
 ## Usage
 
+[Doxygen documentation](https://lzaromskis.github.io/Dependapult/)
+
 Here are some typical scenarios when using Dependapult to show the useage of the service.
 
 ### Getting Dependapult service object
@@ -83,4 +85,24 @@ IDependency dependency = service.GetDependency<IDependency>();
 // Without generics
 IDependency dependency = service.GetDependency(typeof(IDependency)) as IDependency;
 
+```
+
+### Tagging a constructor
+
+If your dependency contains multiple public constructor you must add a `DependapultConstructor` attribute to the constructor you want to be used by the service.
+
+```cs
+class Dependency
+{
+    public Dependency() 
+    {
+        ...
+    }
+
+    [DependapultConstructor]
+    public Dependency(IOtherDependency otherDependency)
+    {
+        ...
+    }
+}
 ```
