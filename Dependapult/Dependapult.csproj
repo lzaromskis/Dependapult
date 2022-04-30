@@ -8,8 +8,8 @@
     <AnalysisLevel>latest</AnalysisLevel>
     <Authors>lzaromskis</Authors>
     <Description>Simple dependency injection library for .NET 6</Description>
-    <AssemblyVersion>1.0.0</AssemblyVersion>
-    <FileVersion>1.0.0</FileVersion>
+    <AssemblyVersion>1.0.1</AssemblyVersion>
+    <FileVersion>1.0.1</FileVersion>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
@@ -24,6 +24,7 @@
     <PackageTags>DependencyInjection;Dependency;Injection;IOC;InversionOfControl</PackageTags>
     <NeutralLanguage>en</NeutralLanguage>
     <PackageReleaseNotes>Changelog.md</PackageReleaseNotes>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
