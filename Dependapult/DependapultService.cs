@@ -51,6 +51,7 @@ namespace Dependapult
         /// <returns>True, if a dependency was registered.</returns>
         /// <exception cref="ArgumentException"></exception>
         /// <exception cref="IllegalTypeRegistrationException"></exception>
+        /// <exception cref="CouldNotCreateObjectOfTypeException"></exception>
         public bool RegisterDependency<TIDep, TDep>(DependencyLifetime lifetime, bool replace = false) where TDep : class, TIDep
         {
             var interfaceType = typeof(TIDep);
@@ -72,6 +73,7 @@ namespace Dependapult
         /// <returns>True, if a dependency was registered.</returns>
         /// <exception cref="ArgumentException"></exception>
         /// <exception cref="IllegalTypeRegistrationException"></exception>
+        /// <exception cref="CouldNotCreateObjectOfTypeException"></exception>
         public bool RegisterDependency<TIDep, TDep>(DependencyLifetime lifetime, object[] args, bool replace = false) where TDep : class, TIDep
         {
             var interfaceType = typeof(TIDep);
@@ -92,6 +94,7 @@ namespace Dependapult
         /// <returns>True, if a dependecy was registered.</returns>
         /// <exception cref="ArgumentException"></exception>
         /// <exception cref="IllegalTypeRegistrationException"></exception>
+        /// <exception cref="CouldNotCreateObjectOfTypeException"></exception>
         public bool RegisterDependency<TIDep>(DependencyLifetime lifetime, Func<DependapultService, TIDep> creatorFunction, bool replace = false) where TIDep : class
         {
             var interfaceType = typeof(TIDep);
@@ -107,6 +110,7 @@ namespace Dependapult
         /// <typeparam name="TIDep">Interface or base type of a dependency.</typeparam>
         /// <typeparam name="TDep">Specific implementation tyoe of a dependency.</typeparam>
         /// <returns>True, if a dependecy was registered.</returns>
+        /// <exception cref="CouldNotCreateObjectOfTypeException"></exception>
         public bool RegisterSingleton<TIDep, TDep>() where TDep : class, TIDep
         {
             return RegisterDependency<TIDep, TDep>(DependencyLifetime.Singleton);
@@ -119,6 +123,7 @@ namespace Dependapult
         /// <typeparam name="TDep">Specific implementation tyoe of a dependency.</typeparam>
         /// <param name="args">Arguments to pass when creating an object of type TDep.</param>
         /// <returns>True, if a dependecy was registered.</returns>
+        /// <exception cref="CouldNotCreateObjectOfTypeException"></exception>
         public bool RegisterSingleton<TIDep, TDep>(object[] args) where TDep : class, TIDep
         {
             return RegisterDependency<TIDep, TDep>(DependencyLifetime.Singleton, args);
@@ -142,6 +147,7 @@ namespace Dependapult
         /// <typeparam name="TDep">Specific implementation tyoe of a dependency.</typeparam>
         /// <param name="replace">Should an already registered dependency of type TIDep be replaced. Only valid for transient lifetime.</param>
         /// <returns>True, if a dependecy was registered.</returns>
+        /// <exception cref="CouldNotCreateObjectOfTypeException"></exception>
         public bool RegisterTransient<TIDep, TDep>(bool replace = false) where TDep : class, TIDep
         {
             return RegisterDependency<TIDep, TDep>(DependencyLifetime.Transient, replace);
@@ -155,6 +161,7 @@ namespace Dependapult
         /// <param name="args">Arguments to pass when creating an object of type TDep.</param>
         /// <param name="replace">Should an already registered dependency of type TIDep be replaced. Only valid for transient lifetime.</param>
         /// <returns>True, if a dependecy was registered.</returns>
+        /// <exception cref="CouldNotCreateObjectOfTypeException"></exception>
         public bool RegisterTransient<TIDep, TDep>(object[] args, bool replace = false) where TDep : class, TIDep
         {
             return RegisterDependency<TIDep, TDep>(DependencyLifetime.Transient, args, replace);
@@ -167,6 +174,7 @@ namespace Dependapult
         /// <param name="creatorFunction">Function which returns an object of TIDep type.</param>
         /// <param name="replace">Should an already registered dependency of type TIDep be replaced. Only valid for transient lifetime.</param>
         /// <returns>True, if a dependecy was registered</returns>
+        /// <exception cref="CouldNotCreateObjectOfTypeException"></exception>
         public bool RegisterTransient<TIDep>(Func<DependapultService, TIDep> creatorFunction, bool replace = false) where TIDep : class
         {
             return RegisterDependency(DependencyLifetime.Transient, creatorFunction, replace);

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.3"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Dependapult: Main Page</title>
+<title>Dependapult: Dependapult</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,8 +25,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Dependapult<span id="projectnumber">&#160;1.0.0</span>
+   <div id="projectname">Dependapult<span id="projectnumber">&#160;1.0.1</span>
    </div>
+   <div id="projectbrief">Simple dependency injection library for .NET 6</div>
   </td>
  </tr>
  </tbody>
@@ -81,10 +82,93 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </iframe>
 </div>
 
-<div class="header">
-  <div class="headertitle"><div class="title">Dependapult Documentation</div></div>
+<div><div class="header">
+  <div class="headertitle"><div class="title"><a class="el" href="namespace_dependapult.html">Dependapult</a> </div></div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><p ><a class="anchor" id="md_README"></a>Simple dependency injection library for .NET 6</p>
+<h1><a class="anchor" id="autotoc_md3"></a>
+What is it?</h1>
+<p >It is a minimal dependency injection library to register all of your dependencies.</p>
+<h1><a class="anchor" id="autotoc_md4"></a>
+Features</h1>
+<ul>
+<li>Two object lifetimes: transient and singleton;</li>
+<li>Convenient methods to register singleton or transient dependencies;</li>
+<li>Transient dependency implementation can be replaced;</li>
+<li>Singletons and the service itself uses lazy loading to save memory;</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md5"></a>
+Usage</h1>
+<p ><a href="https://lzaromskis.github.io/Dependapult/">Doxygen documentation</a></p>
+<p >Here are some typical scenarios when using <a class="el" href="namespace_dependapult.html">Dependapult</a> to show the useage of the service.</p>
+<h2><a class="anchor" id="autotoc_md6"></a>
+Getting Dependapult service object</h2>
+<div class="fragment"><div class="line">DependapultService service = DependapultService.Instance;</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md7"></a>
+Registering a dependency without providing arguments</h2>
+<div class="fragment"><div class="line"><span class="comment">// Manually provide lifetime</span></div>
+<div class="line">service.RegisterDependency&lt;IDependency, Dependency&gt;(<a class="code hl_enumeration" href="namespace_dependapult.html#abf421d0d3d4ab885e2c66962fd66954a">DependencyLifetime</a>.Singleton);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Singleton convenience method</span></div>
+<div class="line">service.RegisterSingleton&lt;IDependency, Dependency&gt;();</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Transient convenience method</span></div>
+<div class="line">service.RegisterTransient&lt;IDependency, Dependency&gt;();</div>
+<div class="ttc" id="anamespace_dependapult_html_abf421d0d3d4ab885e2c66962fd66954a"><div class="ttname"><a href="namespace_dependapult.html#abf421d0d3d4ab885e2c66962fd66954a">Dependapult.DependencyLifetime</a></div><div class="ttdeci">DependencyLifetime</div><div class="ttdoc">Lifetime of a dependency object.</div><div class="ttdef"><b>Definition:</b> DependencyLifetime.cs:10</div></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md8"></a>
+Registering a dependency and providing arguments</h2>
+<div class="fragment"><div class="line"><span class="keywordtype">object</span>[] arguments = <span class="keyword">new</span> <span class="keywordtype">object</span>[] { <span class="stringliteral">&quot;config&quot;</span>, 150, <span class="keyword">false</span> };</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Manually provide lifetime</span></div>
+<div class="line">service.RegisterDependency&lt;IDependency, Dependency&gt;(<a class="code hl_enumeration" href="namespace_dependapult.html#abf421d0d3d4ab885e2c66962fd66954a">DependencyLifetime</a>.Singleton, arguments);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Singleton convenience method</span></div>
+<div class="line">service.RegisterSingleton&lt;IDependency, Dependency&gt;(arguments);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Transient convenience method</span></div>
+<div class="line">service.RegisterTransient&lt;IDependency, Dependency&gt;(arguments);</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md9"></a>
+Registering a dependency and providing a creator function</h2>
+<div class="fragment"><div class="line"><span class="comment">// Manually provide lifetime</span></div>
+<div class="line">service.RegisterDependency&lt;IDependency&gt;(<a class="code hl_enumeration" href="namespace_dependapult.html#abf421d0d3d4ab885e2c66962fd66954a">DependencyLifetime</a>.Singleton, s =&gt; <span class="keyword">new</span> Dependency(s.GetDependency&lt;IOtherDependency&gt;(), 200));</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Singleton convenience method</span></div>
+<div class="line">service.RegisterSingleton&lt;IDependency&gt;(s =&gt; <span class="keyword">new</span> Dependency(s.GetDependency&lt;IOtherDependency&gt;(), 200));</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Transient convenience method</span></div>
+<div class="line">service.RegisterTransient&lt;IDependency&gt;(s =&gt; <span class="keyword">new</span> Dependency(s.GetDependency&lt;IOtherDependency&gt;(), 200));</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md10"></a>
+Replacing a dependency</h2>
+<div class="fragment"><div class="line"><span class="comment">// Manually provide lifetime</span></div>
+<div class="line">service.RegisterDependency&lt;IDependency, Dependency&gt;(<a class="code hl_enumeration" href="namespace_dependapult.html#abf421d0d3d4ab885e2c66962fd66954a">DependencyLifetime</a>.Transient, <span class="keyword">true</span>);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Transient convenience method</span></div>
+<div class="line">service.RegisterTransient&lt;IDependency, Dependency&gt;(<span class="keyword">true</span>);</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md11"></a>
+Getting a dependency</h2>
+<div class="fragment"><div class="line"><span class="comment">// With generics</span></div>
+<div class="line">IDependency dependency = service.GetDependency&lt;IDependency&gt;();</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Without generics</span></div>
+<div class="line">IDependency dependency = service.GetDependency(typeof(IDependency)) as IDependency;</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md12"></a>
+Tagging a constructor</h2>
+<p >If your dependency contains multiple public constructor you must add a <code>DependapultConstructor</code> attribute to the constructor you want to be used by the service.</p>
+<div class="fragment"><div class="line"><span class="keyword">class </span>Dependency</div>
+<div class="line">{</div>
+<div class="line">    <span class="keyword">public</span> Dependency() </div>
+<div class="line">    {</div>
+<div class="line">        ...</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    [DependapultConstructor]</div>
+<div class="line">    <span class="keyword">public</span> Dependency(IOtherDependency otherDependency)</div>
+<div class="line">    {</div>
+<div class="line">        ...</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+</div><!-- fragment --> </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
